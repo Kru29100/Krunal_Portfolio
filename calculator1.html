@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        section h1{
+            font-size: 35px;
+        }
+
+        .container {
+            padding: 20px;
+            background: linear-gradient(to bottom, #fffbd5, #b20a2c);
+            border: 3px rgb(0, 0, 0) solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            gap: 5px;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px 1px black;
+        }
+
+        .container .input{
+            width: 300px;
+            height: 70px;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .row button{
+            width: 70px;
+            height: 70px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgb(251, 210, 108);
+            border-radius: 50%;
+            border: 2px solid rgb(116, 116, 116);
+            box-shadow: 2px 2px 2px  black;
+            margin: 2px;
+            cursor: pointer;
+        }
+        #c{
+            background-color: red;
+            color: white;
+        }
+        #AC{
+            background-color: rgb(255, 69, 199);
+            color: white;
+        }
+        @media (max-width:480px) {
+
+            .container .input{
+            width: 250px;
+            height: 50px;
+        }
+
+        .row button{
+            width: 55px;
+            height: 55px;
+        }
+        section h1{
+            font-size: 25px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Welcome to calculate me!</h1>
+        <div class="container">
+            <div>
+                <input type="text" class="input" readonly>
+            </div>
+            <div class="row">
+                <button type="button" onclick="btnclick('c')" id="c">C</button>
+                <button type="button" onclick="btnclick('AC')" id="AC">AC</button>
+                <button type="button" onclick="btnclick('%')" >%</button>
+                <button type="button" onclick="btnclick('*')">x</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="btnclick('7')">7</button>
+                <button type="button" onclick="btnclick('8')">8</button>
+                <button type="button" onclick="btnclick('9')">9</button>
+                <button type="button" onclick="btnclick('/')">/</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="btnclick('4')">4</button>
+                <button type="button" onclick="btnclick('5')">5</button>
+                <button type="button" onclick="btnclick('6')">6</button>
+                <button type="button" onclick="btnclick('-')">-</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="btnclick('1')">1</button>
+                <button type="button" onclick="btnclick('2')">2</button>
+                <button type="button" onclick="btnclick('3')">3</button>
+                <button type="button" onclick="btnclick('+')">+</button>
+            </div>
+            <div class="row">
+                <button type="button" onclick="btnclick('00')">00</button>
+                <button type="button" onclick="btnclick('0')">0</button>
+                <button type="button" onclick="btnclick('.')">.</button>
+                <button type="button" onclick="btnclick('=')">=</button>
+            </div>
+        </div>
+    </section>
+    <script>
+          let val = "";
+        document.querySelector("input").value = val;
+        let btnclick = (element) => {
+            if (element == "c") {
+               val="";
+                document.querySelector("input").value ="0";
+            }
+            else if (element == "AC") {
+                val = val.substring(0, val.length - 1);
+                document.querySelector("input").value = val;
+            }
+            else if (element == "=") {
+                console.log("hello");
+
+                let result = eval(document.querySelector("input").value);
+               
+                document.querySelector("input").value = result;
+                console.log(typeof result);
+                
+                val=String(result);
+            }
+            else {
+                val += element;
+                document.querySelector("input").value = val;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
