@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap: 10px;
+        }
+
+        form .dcontainer{
+            background-color: bisque;
+            width: 300px;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        form .container {
+            padding: 20px;
+            min-height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            
+        }
+
+        form fieldset{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+        }
+
+        .container input {
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .container label {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .container span {
+            color: red;
+            font-weight: bold;
+        }
+
+        .container button {
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <form action="welcome.html" method="get" onsubmit="return validate()">
+
+            <div class="dcontainer">
+                <fieldset  class="container">
+                    <legend>Registration Form</legend>
+                    <label for="user">Username:</label>
+                    <input type="text" name="user" id="un" placeholder="Enter your name">
+                    <span></span>
+
+                    <label for="pass">Password:</label>
+                    <input type="password" name="pass" id="pass" placeholder="Enter your password">
+                    <span></span>
+
+                    <label for="c-pass">Confirm-password:</label>
+                    <input type="password" id="c-pass" name="c-pass" placeholder="confirm your Password">
+                    <span></span>
+
+                    <label for="email">Email-id:</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email-id">
+                    <span></span>
+
+                    <label for="mobile">Mobile number: +91</label>
+                    <input type="number" id="num" name="mobile" placeholder="Your 10 digit mobile number"
+                        maxlength="10">
+                    <span></span>
+
+                    <div>
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button>
+                    </div>
+
+                </fieldset>
+            </div>
+
+        </form>
+    </section>
+
+    <script>
+
+
+
+        let validate = function () {
+
+            let user = document.getElementById("un").value.trim();
+            console.log(user);
+
+            let pass = document.getElementById("pass").value.trim();
+            console.log(pass);
+
+            let cpass = document.getElementById("c-pass").value.trim();
+            console.log(cpass);
+
+            let email = document.getElementById("email").value.trim();
+            console.log(email);
+
+            let mob = document.getElementById("num").value.trim();
+            console.log(mob);
+
+            let spanmsg = document.querySelectorAll("span")
+
+
+            //  Validation For Username;
+            if (user === "" || !isNaN(user)) {
+                spanmsg[0].innerHTML = user === ""
+                    ? "⚠️ Fields cannot be empty."
+                    : "⚠️ Invalid input. Numbers are not allowed.";
+                return false;
+            } else {
+                spanmsg[0].innerHTML = "";
+            }
+
+            //Validation For Password
+            //  ? = Grouping
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!/*/$])[A-Za-z\d@!/*/$]{8,}$/;
+
+            if (!passwordRegex.test(pass)) {
+                spanmsg[1].innerHTML = "⚠️ Password must include at least 8 characters, uppercase, lowercase, number and a special character.";
+                return false;
+            } else {
+                spanmsg[1].innerHTML = "";
+            }
+
+            // Validation For Confirm Password.
+            if (cpass != pass) {
+                spanmsg[2].innerHTML = "⚠️ Passwords do not match.";
+                return false;
+            } else {
+                spanmsg[2].innerHTML = "";
+            }
+
+            // Validation For Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+[^.]$/;
+            if(!emailRegex.test(email)) {
+                spanmsg[3].innerHTML = "⚠️ Please enter a valid email address.";
+                return false;
+            } else {
+                spanmsg[3].innerHTML = "";
+            }
+
+            //  Validation for Mobile Number
+            if(mob.length !== 10 || isNAN(mob)) {
+                spanmsg[4].innerHTML = "⚠️ Please eneter a valid 10-digit mobile number.";
+                return false;
+            } else {
+                spanmsg[4]. innerHTML = "";
+            }
+
+            // // If all Validation Pass
+            return true;
+        }
+    </script>
+</body>
+
+</html>
