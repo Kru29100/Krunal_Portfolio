@@ -78,7 +78,7 @@
                             alt="Calculator">
                         <div class="layer">
                             <h3>Calculator</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, reprehenderit!</p>
+                            <p>Make Calculator using Html, CSS, JAVASCRIPT with all working button.</p>
                             <a href="calculator1.html" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         <img class="rounded img-fluid" src="https://i.ibb.co/vxtYGmBG/modal.png" alt="modal">
                         <div class="layer">
                             <h3>Modal</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, reprehenderit!</p>
+                            <p>Make one dialog popup, Use to make login and Signup with Html, CSS and Bootstrap.</p>
                             <a href="modal.html" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             alt="Form_validation">
                         <div class="layer">
                             <h3>Form-Validation</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, reprehenderit!</p>
+                            <p>Done form validation with javascript!</p>
                             <a href="form_validation.html"><i class="bi bi-box-arrow-up-right"></i></a>
                         </div>
                     </div>
@@ -109,10 +109,10 @@
          <!-- About Me -->
           <section class="container text-light my-5 p-3" id="about" style="min-height:100vh;">
             <div class="row justify-content-evenly">
-                <div class="img-container rounded col-sm-6 col-md-4 mt-5">
+                <div class="img-container rounded col-md-6 col-lg-4 mt-5">
                      <img src="https://i.ibb.co/1JThGmsT/DSC-9690-removebg-preview.png" alt="profilephoto">
                 </div>
-                <div class="col-sm-6 col-md-6 mt-5 text-light">
+                <div class="col-md-6 col-lg-6 mt-5 text-light">
                     <h1 class="about">About Me</h1><hr>
                     <p>Enthusiastic software developer with a focus on web and software development. Proficient in creating user-friendly applications and adept at problem-solving, Strong communication andteamwork skills. Quick learner with a passion for applying new technologies.</p>
                     <div class="tab-titles">
@@ -145,12 +145,12 @@
                     <form action="https://formsubmit.co/17db7332f95760aad99dd01cef6e88b2" method="post">
                         <div class="contact d-flex flex-column justify-content-center align-items-center gap-3 py-3">
 
-                            <input type="text" name="Name" id="Name" class="form-control" placeholder="Enter your Name" required>
+                            <input type="text" name="Name" id="name" class="form-control" placeholder="Enter your Name" required>
                             <input type="email" name="email" id="email" class="form-control"
                                 placeholder="Enter your Email" required>
                             <textarea name="Message" id="message" cols="20" rows="5" placeholder="Enter your Message"
                                 class="form-control" required></textarea>
-                            <button type="submit" id="sub" class="btn btn-outline-danger">Send Message</button>
+                            <button type="submit" id="sub" class="btn btn-outline-danger form-control" disabled>Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -167,7 +167,7 @@
 
     </main>
     <footer>
-        <h4>&copy; 2023 My Portfolio. All rights reserved</h4>
+        <h5>&copy; 2023 My Portfolio. All rights reserved</h5>
         <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
         <a href="https://www.linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
         <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
@@ -199,6 +199,32 @@
             event.currentTarget.classList.add("active-link");
             document.getElementById(tabname).classList.add("active-tab");
         }
+
+
+        let nav_links = document.querySelectorAll(".nav-link");
+
+        for(x of nav_links){
+            x.addEventListener("click",function(){
+                let collapse = document.getElementById("navbarSupportedContent");
+                collapse.classList.remove("show");
+            })
+        }
+
+       
+
+        const textinputs = document.querySelectorAll('input[type="text"], textarea');
+        const button = document.getElementById('sub');
+
+    // Function to check if all inputs are filled
+    function checkInputs() {
+      const allFilled = Array.from(textinputs).every(input => input.value.trim() !== "");
+      button.disabled = !allFilled;
+    }
+
+    // Add event listeners to each input
+    textinputs.forEach(input => {
+      input.addEventListener('input', checkInputs);
+    });
 </script>
 </body>
 
