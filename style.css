@@ -191,13 +191,16 @@
  /* About */
 
  .img-container {
-     min-height: 350px;
+     width: 400px ;
+     height: 470px;
      background: grey;
      overflow: hidden;
+     padding: 0px;
  }
 
  .img-container img {
      height: 100%;
+     width: 100%;
  }
 
  .tab-titles {
@@ -305,8 +308,8 @@
      }
 
      .img-container {
-        width: 250px;
-         min-height: 250px;
+         width: 250px;
+         height: 300px;
          background: grey;
          overflow: hidden;
          padding: 0;
@@ -317,7 +320,7 @@
          height: 100%;
      }
 
-     footer h4 {
+     footer h5 {
          font-size: 15px;
      }
 
